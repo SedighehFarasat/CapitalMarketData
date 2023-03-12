@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapitalMarketData.BackgroundService", "CapitalMarketData.BackgroundService\CapitalMarketData.BackgroundService.csproj", "{57549AAC-4094-4D0D-8E90-DBA48AA599C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapitalMarketData.Persistence", "CapitalMarketData.Persistence\CapitalMarketData.Persistence.csproj", "{FA78780F-01EB-49B5-8270-8861F0DF65F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapitalMarketData.Domain", "CapitalMarketData.Domain\CapitalMarketData.Domain.csproj", "{9430B2F5-16E7-4184-83C2-5688518DE0A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{57549AAC-4094-4D0D-8E90-DBA48AA599C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57549AAC-4094-4D0D-8E90-DBA48AA599C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57549AAC-4094-4D0D-8E90-DBA48AA599C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA78780F-01EB-49B5-8270-8861F0DF65F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA78780F-01EB-49B5-8270-8861F0DF65F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA78780F-01EB-49B5-8270-8861F0DF65F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA78780F-01EB-49B5-8270-8861F0DF65F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9430B2F5-16E7-4184-83C2-5688518DE0A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9430B2F5-16E7-4184-83C2-5688518DE0A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9430B2F5-16E7-4184-83C2-5688518DE0A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9430B2F5-16E7-4184-83C2-5688518DE0A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
