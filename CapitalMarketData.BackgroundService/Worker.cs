@@ -5,20 +5,16 @@ using CapitalMarketData.Domain.Enums;
 using CapitalMarketData.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace CapitalMarketData.BackgroundTasks;
 public class Worker : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
-    private readonly ILogger<Worker> _logger;
-    private readonly FileLogger _fileLogger;
 
-    public Worker(IServiceProvider serviceProvider, ILogger<Worker> logger, FileLogger fileLogger)
+    public Worker(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
-        _logger = logger;
-        _fileLogger = fileLogger;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -59,20 +55,17 @@ public class Worker : BackgroundService
                             {
                                 _db.TradingData.Add(tradingData);
                                 int affected = _db.SaveChanges();
-                                _fileLogger.WriteToFile($"{affected} row affected for {instrument.Ticker}");
-                                _logger.LogInformation($"{affected} row affected for {instrument.Isin}");
+                                Log.Information($"{affected} row affected for {instrument.Isin}");
                             }
                         }
                     }
                     catch (HttpRequestException e)
                     {
-                        _fileLogger.WriteToFile($"Http Exception Caught On {instrument.Ticker}: {e.Message}");
-                        _logger.LogError($"Http Exception Caught On {instrument.Isin}: {e.Message}");
+                        Log.Error($"Http Exception Caught On {instrument.Isin}: {e.Message}");
                     }
                     catch (Exception e)
                     {
-                        _fileLogger.WriteToFile($"Other Exception Caught On {instrument.Ticker}: {e.Message}");
-                        _logger.LogError($"Other Exception Caught On {instrument.Isin}: {e.Message}");
+                        Log.Error($"Other Exception Caught On {instrument.Isin}: {e.Message}");
                     }
                     await Task.Delay(3000, stoppingToken);
                 }
