@@ -13,14 +13,12 @@ public class Worker : BackgroundService
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<Worker> _logger;
     private readonly FileLogger _fileLogger;
-    private readonly TseService _tseService;
 
-    public Worker(IServiceProvider serviceProvider, ILogger<Worker> logger, TseService tseService, FileLogger fileLogger)
+    public Worker(IServiceProvider serviceProvider, ILogger<Worker> logger, FileLogger fileLogger)
     {
         _serviceProvider = serviceProvider;
         _logger = logger;
         _fileLogger = fileLogger;
-        _tseService = tseService;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -35,8 +33,8 @@ public class Worker : BackgroundService
                 {
                     try
                     {
-                        var data = _tseService.FetchLiveData(instrument.Isin);
-                        if (data != null)
+                        var data = TseService.FetchLiveData(instrument.Isin);
+                        if (data is not null)
                         {
                             TradingData tradingData = new()
                             {
@@ -62,21 +60,21 @@ public class Worker : BackgroundService
                                 _db.TradingData.Add(tradingData);
                                 int affected = _db.SaveChanges();
                                 _fileLogger.WriteToFile($"{affected} row affected for {instrument.Ticker}");
-                                _logger.LogInformation("{affected} row affected for {Isin}", affected, instrument.Isin);
+                                _logger.LogInformation($"{affected} row affected for {instrument.Isin}");
                             }
                         }
                     }
                     catch (HttpRequestException e)
                     {
                         _fileLogger.WriteToFile($"Http Exception Caught On {instrument.Ticker}: {e.Message}");
-                        _logger.LogError("Http Exception Caught On {Isin}: {errorMessage}", instrument.Isin, e.Message);
+                        _logger.LogError($"Http Exception Caught On {instrument.Isin}: {e.Message}");
                     }
                     catch (Exception e)
                     {
                         _fileLogger.WriteToFile($"Other Exception Caught On {instrument.Ticker}: {e.Message}");
-                        _logger.LogError("Other Exception Caught On {Isin}: {errorMessage}", instrument.Isin, e.Message);
+                        _logger.LogError($"Other Exception Caught On {instrument.Isin}: {e.Message}");
                     }
-                    Thread.Sleep(3000);
+                    await Task.Delay(3000, stoppingToken);
                 }
             }
         }

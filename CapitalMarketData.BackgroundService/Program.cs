@@ -26,7 +26,6 @@ try
             option.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
         });
         services.AddSingleton<FileLogger>();
-        services.AddTransient<TseService>();
         services.AddHostedService<Worker>();
     })
     .Build();
