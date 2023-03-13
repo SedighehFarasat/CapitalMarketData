@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace CapitalMarketData.BackgroundTask.Services;
+namespace CapitalMarketData.BackgroundTasks.Services;
 public class FileLogger
 {
     private readonly string _filePath;

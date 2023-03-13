@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapitalMarketData.BackgroundTask", "CapitalMarketData.BackgroundService\CapitalMarketData.BackgroundTask.csproj", "{57549AAC-4094-4D0D-8E90-DBA48AA599C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapitalMarketData.BackgroundTasks", "CapitalMarketData.BackgroundService\CapitalMarketData.BackgroundTasks.csproj", "{57549AAC-4094-4D0D-8E90-DBA48AA599C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapitalMarketData.Persistence", "CapitalMarketData.Persistence\CapitalMarketData.Persistence.csproj", "{FA78780F-01EB-49B5-8270-8861F0DF65F1}"
 EndProject

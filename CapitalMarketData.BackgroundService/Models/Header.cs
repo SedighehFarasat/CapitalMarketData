@@ -1,4 +1,4 @@
-﻿namespace CapitalMarketData.BackgroundTask.Models;
+﻿namespace CapitalMarketData.BackgroundTasks.Models;
 public class Header
 {
     public string? name { get; set; }

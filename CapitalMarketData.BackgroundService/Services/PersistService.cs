@@ -1,10 +1,10 @@
-﻿using CapitalMarketData.BackgroundTask.Helper;
+﻿using CapitalMarketData.BackgroundTasks.Helper;
 using CapitalMarketData.Domain.Entities;
 using CapitalMarketData.Domain.Enums;
 using CapitalMarketData.Persistence;
 using Microsoft.Extensions.Logging;
 
-namespace CapitalMarketData.BackgroundTask.Services;
+namespace CapitalMarketData.BackgroundTasks.Services;
 public class PersistService
 {
     private readonly ILogger _logger;

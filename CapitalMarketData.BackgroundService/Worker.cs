@@ -1,5 +1,5 @@
-﻿using CapitalMarketData.BackgroundTask.Helper;
-using CapitalMarketData.BackgroundTask.Services;
+﻿using CapitalMarketData.BackgroundTasks.Helper;
+using CapitalMarketData.BackgroundTasks.Services;
 using CapitalMarketData.Domain.Entities;
 using CapitalMarketData.Domain.Enums;
 using CapitalMarketData.Persistence;
@@ -7,14 +7,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace CapitalMarketData.BackgroundTask;
+namespace CapitalMarketData.BackgroundTasks;
 public class Worker : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<Worker> _logger;
-    public readonly FileLogger _fileLogger;
-    public readonly CapitalMarketDataDbContext _db;
-    public readonly TseService _tseService;
+    private readonly FileLogger _fileLogger;
+    private readonly TseService _tseService;
 
     public Worker(IServiceProvider serviceProvider, ILogger<Worker> logger, TseService tseService, FileLogger fileLogger)
     {
@@ -26,7 +25,6 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("Market Data Service Started ...");
         using (IServiceScope scope = _serviceProvider.CreateScope())
         {
             var _db = scope.ServiceProvider.GetRequiredService<CapitalMarketDataDbContext>();
@@ -81,7 +79,6 @@ public class Worker : BackgroundService
                     Thread.Sleep(3000);
                 }
             }
-            _logger.LogInformation($"Market Data Service Stopped.");
         }
     }
 }

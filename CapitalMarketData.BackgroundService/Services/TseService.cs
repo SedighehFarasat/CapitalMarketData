@@ -1,7 +1,7 @@
-﻿using CapitalMarketData.BackgroundTask.Models;
+﻿using CapitalMarketData.BackgroundTasks.Models;
 using System.Text.Json;
 
-namespace CapitalMarketData.BackgroundTask.Services;
+namespace CapitalMarketData.BackgroundTasks.Services;
 public class TseService
 {
     /// <summary>

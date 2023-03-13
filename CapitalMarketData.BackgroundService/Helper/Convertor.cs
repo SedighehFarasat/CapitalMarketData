@@ -1,6 +1,6 @@
 ﻿using CapitalMarketData.Domain.Enums;
 
-namespace CapitalMarketData.BackgroundTask.Helper;
+namespace CapitalMarketData.BackgroundTasks.Helper;
 public static class Convertor
 {
     public static Status? ToStatusEnum(string str)

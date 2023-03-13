@@ -1,4 +1,4 @@
-﻿namespace CapitalMarketData.BackgroundTask.Models;
+﻿namespace CapitalMarketData.BackgroundTasks.Models;
 public class Trade  
 {
     public string? ci { get; set; }
