@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CapitalMarketData.BackgroundTask": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
